@@ -8,6 +8,24 @@
 
 This project is currently soaring through the beta phase!  Feel free to explore, experiment, and provide your feedback. 
 
+## Table of Contents
+
+- [Getting Started](#getting-started)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API](#api)
+  - [Constructor](#constructor)
+  - [Conditions](#conditions)
+  - [Case-Insensitive Conditions](#case-insensitive-conditions)
+  - [Logical Operators](#logical-operators)
+  - [Parentheses](#parentheses)
+  - [Count Conditions](#count-conditions)
+  - [Building the Query](#building-the-query)
+- [Examples](#examples)
+- [Supported and tested Node.js versions](#supported-and-tested-nodejs-versions)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Getting Started
 
 Fluent QueryKit is a TypeScript package that provides a Fluent API for constructing queries using pdevito3/QueryKit. It simplifies the process of building complex queries by offering a chainable and expressive syntax.
