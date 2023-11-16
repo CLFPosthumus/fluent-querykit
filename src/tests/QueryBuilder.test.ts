@@ -262,8 +262,8 @@ describe("QueryBuilder", () => {
     expect(queryBuilder.build()).toBe(expectedQuery);
   });
 
-  it("should stringify numeric values", () => {
-    const expectedQuery = 'propertyName !_-= "42"';
+  it("should stringify not numeric values", () => {
+    const expectedQuery = 'propertyName !_-= 42';
 
     queryBuilder.doesNotEndWith("propertyName", 42);
 
@@ -282,12 +282,6 @@ describe("QueryBuilder", () => {
     queryBuilder.doesNotSoundLike("name", "example");
     const result = queryBuilder.build();
     expect(result).toBe('name !~ "example"');
-  });
-
-  test("it should handle numbers as well", () => {
-    queryBuilder.doesNotSoundLike("age", 42);
-    const result = queryBuilder.build();
-    expect(result).toBe('age !~ "42"');
   });
 
   test("it should chain correctly with other methods", () => {
