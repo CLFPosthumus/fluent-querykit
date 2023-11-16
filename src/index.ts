@@ -1,14 +1,17 @@
 export default class QueryBuilder {
-  private query: string;
+  private encodeURi: boolean;
+  private query: string = "";
 
-  constructor() {
-    this.query = "";
+  constructor(encodeUri: boolean = true, addFilterStatement = true) {
+    this.encodeURi = encodeUri;
+    if(addFilterStatement)  this.query += "Filters= "
   }
 
   private addCondition(condition: string): QueryBuilder {
     this.query += condition + " ";
     return this;
   }
+
   private stringifyValue(value: string | number | boolean): string {
     if (typeof value === "string") {
       return `"${value}"`;
@@ -207,7 +210,8 @@ export default class QueryBuilder {
   }
 
   build(): string {
-    return this.query.trim();
+    this.query = this.query.trim()
+    return this.encodeURi ? encodeURIComponent(this.query) : this.query;
   }
   
 }

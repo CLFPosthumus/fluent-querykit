@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc",
     "main": "dist/index.js",
+    "example": "tsc && node dist/example.js",
     "test": "npx jest"
   },
   "keywords": [

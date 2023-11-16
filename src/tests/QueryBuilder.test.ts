@@ -4,12 +4,28 @@ describe("QueryBuilder", () => {
   let queryBuilder: QueryBuilder;
 
   beforeEach(() => {
-    queryBuilder = new QueryBuilder();
+    queryBuilder = new QueryBuilder(false,false);
+  });
+
+  describe('QueryBuilder create', () => {
+    it('should create an instance with default values', () => {
+      const instance = new QueryBuilder();
+      expect(instance).toBeDefined();
+      expect(instance['encodeURi']).toBe(true);
+      expect(instance['query']).toBe("Filters= ");
+    });
+  
+    it('should create an instance with custom values', () => {
+      const instance = new QueryBuilder(false, false);
+      expect(instance).toBeDefined();
+      expect(instance['encodeURi']).toBe(false);
+
+    });
+  
   });
 
   it('should generate correct query for "Count of Property > 5"', () => {
     const query = queryBuilder.countGreaterThan("Property", 5).build();
-
     expect(query).toBe("Property #> 5");
   });
 
@@ -213,7 +229,7 @@ describe("QueryBuilder", () => {
   });
 
   it('should add "(" and ")" to the query', () => {
-    const query = new QueryBuilder()
+    const query = queryBuilder
       .openParen()
       .equals("FirstName", "John")
       .or()
@@ -229,7 +245,7 @@ describe("QueryBuilder", () => {
   });
 
   it("should return the built query", () => {
-    const query = new QueryBuilder()
+    const query = queryBuilder
       .equals("FirstName", "Jane")
       .and()
       .lessThan("Age", 10)
@@ -374,5 +390,21 @@ describe("QueryBuilder", () => {
   it("lessThanOrEqualCaseCount should generate correct query", () => {
     const result = queryBuilder.lessThanOrEqualCaseCount("age", 30).build();
     expect(result).toBe("age #<= 30");
+  });
+
+  describe('build', () => {
+    it('should trim and encode URI when encodeURi is true', () => {
+      const instance = new QueryBuilder(true);
+      instance['query'] = '   example query   ';
+      const result = instance.build();
+      expect(result).toBe('example%20query');
+    });
+
+    it('should trim without encoding URI when encodeURi is false', () => {
+      const instance = new QueryBuilder(false);
+      instance['query'] = '   example query   ';
+      const result = instance.build();
+      expect(result).toBe('example query');
+    });
   });
 });
