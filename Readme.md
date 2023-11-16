@@ -79,13 +79,22 @@ const query = new QueryBuilder()
 // Result: 'ItemCount #> 10 && ItemCount #<= 5'
 ```
 
+## Supported and tested Node.js versions:
+- 14.x
+- 15.x
+- 16.x
+- 17.x
+- 18.x
+- 19.x
+- 20.x
+  
 ## Beta Notice
 
 Fluent QueryKit is currently in beta, and we welcome feedback from developers. Please report any issues or suggestions on the GitHub repository.
 
 ## Contributing
 
-If you'd like to contribute to Fluent QueryKit, please create a PR or issue on [github](https://github.com/CLFPosthumus/fluent-querykit). 
+If you'd like to contribute to Fluent QueryKit, please create a PR or issue on https://github.com/CLFPosthumus/fluent-querykit. 
 
 ## License
 
