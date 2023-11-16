@@ -79,7 +79,7 @@ const query = new QueryBuilder()
 // Result: 'ItemCount #> 10 && ItemCount #<= 5'
 ```
 
-## Supported and tested Node.js Versions:**
+## Supported and tested Node.js versions:
 - 14.x
 - 15.x
 - 16.x
