@@ -1,0 +1,29 @@
+# Node.js
+node_modules/
+
+# TypeScript
+*.tsbuildinfo
+
+# Build output
+dist/
+lib/
+out/
+*.js
+*.js.map
+!jest.config.js
+# Editor-specific files
+.vscode/
+.idea/
+
+# Dependency directories
+jspm_packages/
+bower_components/
+
+coverage/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
