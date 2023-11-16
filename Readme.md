@@ -1,6 +1,7 @@
 # fluent-querykit
 
-[![GitHub stats](https://github-readme-stats.vercel.app/api?username=CLFPosthumus)](https://github.com/CLFPosthumus/fluent-querykit/)
+[![Build Status](https://github.com/CLFPosthumus/fluent-querykit/workflows/Build/badge.svg?branch=main)](https://github.com/CLFPosthumus/fluent-querykit/actions?query=workflow%3ABuild+branch%3Amain)
+![example workflow](https://github.com/github/docs/actions/workflows/codecov.yml/badge.svg)
 
 Fluent QueryKit is a TypeScript package that provides a Fluent API for constructing queries using pdevito3/QueryKit. It simplifies the process of building complex queries by offering a chainable and expressive syntax.
 
