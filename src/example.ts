@@ -30,5 +30,5 @@ async function callApi(apiUrl: string, token: string) {
   .build();
 
   // Call the API function with the apiUrl and bearerToken
-  callApi(`https://localhost:5375/api/landlords?${query}`, bearerToken);
+  callApi(`https://localhost:5375/api/landlords?${query}`  , bearerToken);
   

@@ -1,8 +1,8 @@
 {
   "name": "fluent-querykit",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "Fluent api for pdevito3/QueryKit in typescript",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc --declaration ",
     "main": "dist/index.js",
