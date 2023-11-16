@@ -98,7 +98,7 @@ Fluent QueryKit is currently in beta, and we welcome feedback from developers. P
 
 ## Contributing
 
-If you'd like to contribute to Fluent QueryKit, please create a PR or issue on [github]https://github.com/CLFPosthumus/fluent-querykit. 
+If you'd like to contribute to Fluent QueryKit, please create a PR or issue on [github](https://github.com/CLFPosthumus/fluent-querykit). 
 
 ## License
 
