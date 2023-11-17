@@ -24,10 +24,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
-        run: npm run test
-
-      - name: Upload coverage reports to Codeclimate
+      - name: Run tests and upload coverage reports to Codeclimate
         uses: codecov/codecov-action@v3
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: npm run test
