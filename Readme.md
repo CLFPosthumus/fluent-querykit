@@ -2,8 +2,7 @@
 
 [![Build Status](https://github.com/CLFPosthumus/fluent-querykit/actions/workflows/codecov.yml/badge.svg?branch=main)](https://github.com/CLFPosthumus/fluent-querykit/actions?query=workflow%3ABuild+branch%3Amain)
 [![Maintainability](https://api.codeclimate.com/v1/badges/e206d74bcb6c17cd9f49/maintainability)](https://codeclimate.com/github/CLFPosthumus/fluent-querykit/maintainability)
-[![Code Climate](https://codeclimate.com/github/cloudfoundry/membrane.png)](https://codeclimate.com/github/cloudfoundry/membrane)
-
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e206d74bcb6c17cd9f49/test_coverage)](https://codeclimate.com/github/CLFPosthumus/fluent-querykit/test_coverage)
 
 🚀 Welcome to the Beta Launch! 🚀
 
