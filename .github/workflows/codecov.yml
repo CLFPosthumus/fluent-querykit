@@ -10,6 +10,7 @@ on:
       - test/*
       - '*.json'
       - npm.lock
+      - '.github/workflows'
   pull_request:
     paths:
       - '!*.MD'
@@ -40,8 +41,8 @@ jobs:
         node-version: '20.x'
     - run: npm install
     - run: npm run build
-    - uses: paambaati/codeclimate-action@v2.2.4
+    - run: npm run test
+    - name: Test & publish code coverage
+      uses: paambaati/codeclimate-action@v5.0.0
       env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-      with:
-        coverageCommand: npm run test
+        CC_TEST_REPORTER_ID: <code_climate_reporter_id>
