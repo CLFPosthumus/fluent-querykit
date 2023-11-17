@@ -30,7 +30,7 @@ const query = new QueryBuilder()
 
 console.log(query);
 ```
-For more examples check the wiki: [Wiki]([https://github.com/CLFPosthumus/fluent-querykit](https://github.com/CLFPosthumus/fluent-querykit/wiki)
+For more examples check the wiki: [Wiki](https://github.com/CLFPosthumus/fluent-querykit/wiki)
 
 ## Supported and tested Node.js versions:
 - 14.x - 21.x
