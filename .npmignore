@@ -33,3 +33,5 @@ src/*
 dist/tests/*
 dist/example.*
 .github
+jest.config.js
+tsconfig.json

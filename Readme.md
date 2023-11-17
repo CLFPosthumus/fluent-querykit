@@ -1,7 +1,8 @@
 # fluent-querykit
 
 [![Build Status](https://github.com/CLFPosthumus/fluent-querykit/actions/workflows/codecov.yml/badge.svg?branch=main)](https://github.com/CLFPosthumus/fluent-querykit/actions?query=workflow%3ABuild+branch%3Amain)
-[![codecov](https://codecov.io/gh/CLFPosthumus/fluent-querykit/graph/badge.svg?token=76HGM8YP8L)](https://codecov.io/gh/CLFPosthumus/fluent-querykit)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e206d74bcb6c17cd9f49/maintainability)](https://codeclimate.com/github/CLFPosthumus/fluent-querykit/maintainability)
+[![Code Climate](https://codeclimate.com/github/cloudfoundry/membrane.png)](https://codeclimate.com/github/cloudfoundry/membrane)
 
 
 🚀 Welcome to the Beta Launch! 🚀
@@ -149,15 +150,7 @@ const query = new QueryBuilder()
 This example builds a query string for filtering data where the name is 'John' or the role starts with 'Admin' and the department contains 'Engineering' or the title ends with 'Developer'.
 
 ## Supported and tested Node.js versions:
-- 14.x
-- 15.x
-- 16.x
-- 17.x
-- 18.x
-- 19.x
-- 20.x
-- 21.x
-  
+- 14.x - 21.x
 ## Contributing
 
 If you'd like to contribute to Fluent QueryKit, please create a PR or issue on [github](https://github.com/CLFPosthumus/fluent-querykit). 

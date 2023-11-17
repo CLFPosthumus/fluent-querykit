@@ -27,7 +27,7 @@ jobs:
       - name: Run tests
         run: npm run test
 
-      - name: Upload coverage reports to Codecov
+      - name: Upload coverage reports to Codeclimate
         uses: codecov/codecov-action@v3
         env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
