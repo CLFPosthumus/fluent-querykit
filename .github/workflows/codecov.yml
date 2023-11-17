@@ -1,32 +1,47 @@
-name: Running Code Coverage
-
-on: [push, pull_request]
-
+name: build
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - '!*' # Do not execute on tags
+    paths:
+      - src/*
+      - test/*
+      - '*.json'
+      - npm.lock
+  pull_request:
+    paths:
+      - '!*.MD'
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
+  test:
     strategy:
       matrix:
-        node-version: [14.x, 15.x, 16.x, 17.x, 18.x, 19.x, 20.x, 21.x]
-
+        platform: [ ubuntu-latest, macOS-latest ]
+        node: [ '14.x', '21.x' ]
+    name: test/node ${{ matrix.node }}/${{ matrix.platform }}
+    runs-on: ${{ matrix.platform }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 2
-
-      - name: Set up Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests and upload coverage reports to Codeclimate
-        uses: paambaati/codeclimate-action@v2.2.4
-        env:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
+      with:
+        node-version: ${{ matrix.node }}
+    - run: npm install
+    - run: npm build
+    - run: npm test
+  coverage:
+    needs: [ test ]
+    name: coverage
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
+      with:
+        node-version: '20.x'
+    - run: npm install
+    - run: npm build
+    - uses: paambaati/codeclimate-action@v2.2.4
+      env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          coverageCommand: npm run test
+      with:
+        coverageCommand: npm run test
