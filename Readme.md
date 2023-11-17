@@ -35,13 +35,13 @@ console.log(query);
 ```
 For more examples check the [Wiki](https://github.com/CLFPosthumus/fluent-querykit/wiki)
 
-## Supported and tested Node.js versions:
+### Supported and tested Node.js versions:
 - 14.x - 21.x
   
-## Contributing
+### Contributing
 
 If you'd like to contribute to Fluent QueryKit, please create a PR or issue on [github](https://github.com/CLFPosthumus/fluent-querykit). 
 
-## License
+### License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
