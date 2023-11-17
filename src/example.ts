@@ -22,13 +22,13 @@ async function callApi(apiUrl: string, token: string) {
   }
   
   // Replace 'YOUR_API_URL' and 'YOUR_BEARER_TOKEN' with your actual API URL and Bearer token
-  const apiUrl = 'https://localhost:5375/api/landlords';
+  const apiUrl = 'YOUR_API_URL';
   const bearerToken = 'API_TOKEN';
   
   const query = new QueryBuilder()
-  .equals("landlordType.value", "Agency")
+  .equals("firstname", "John")
   .build();
 
   // Call the API function with the apiUrl and bearerToken
-  callApi(`https://localhost:5375/api/landlords?${query}`  , bearerToken);
+  callApi(`${apiUrl}?${query}`  , bearerToken);
   
