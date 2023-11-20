@@ -4,8 +4,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/e206d74bcb6c17cd9f49/maintainability)](https://codeclimate.com/github/CLFPosthumus/fluent-querykit/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/e206d74bcb6c17cd9f49/test_coverage)](https://codeclimate.com/github/CLFPosthumus/fluent-querykit/test_coverage)
 
-[![minzip](https://flat.badgen.net/bundlephobia/minzip/fluent-querykit)](https://bundlephobia.com/package/fluent-querykit)
-[![dependencies](https://flat.badgen.net/bundlephobia/dependency-count/fluent-querykit)](https://bundlephobia.com/package/fluent-querykit)
+[![minzip](https://img.shields.io/bundlejs/size/fluent-querykit)](https://bundlephobia.com/package/fluent-querykit)
 
 🚀 Welcome to the Beta Launch! 🚀
 
