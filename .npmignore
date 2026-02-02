@@ -4,12 +4,9 @@ node_modules/
 # TypeScript
 *.tsbuildinfo
 
-# Build output
-lib/
-out/
-*.js
-*.js.map
-!jest.config.js
+# Source files
+src/
+
 # Editor-specific files
 .vscode/
 .idea/
@@ -18,20 +15,17 @@ out/
 jspm_packages/
 bower_components/
 
+# Coverage
 coverage/
-
-# TypeScript cache
-*.tsbuildinfo
 
 # Miscellaneous
 .DS_Store
 Thumbs.db
-src/tests/*.ts
-src/*
-!dist/index.js
-!dist/index.d.ts
-dist/tests/*
-dist/example.*
 .github
 jest.config.js
 tsconfig.json
+pnpm-lock.yaml
+
+# Exclude tests and example from dist
+dist/tests/
+dist/example.*
