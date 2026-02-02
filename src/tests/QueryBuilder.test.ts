@@ -401,4 +401,68 @@ describe("QueryBuilder", () => {
       expect(result).toBe('example query');
     });
   });
+
+  describe('buildFilterExpression', () => {
+    it('should return raw filter expression without Filters= prefix and without encoding', () => {
+      const instance = new QueryBuilder();
+      instance.equals("name", "John");
+      const result = instance.buildFilterExpression();
+      expect(result).toBe('name == "John"');
+    });
+
+    it('should return raw expression when constructed with addFilterStatement=false', () => {
+      const instance = new QueryBuilder(false, false);
+      instance.equals("name", "John");
+      const result = instance.buildFilterExpression();
+      expect(result).toBe('name == "John"');
+    });
+
+    it('should return raw expression regardless of encodeUri setting', () => {
+      const instance = new QueryBuilder(true, true);
+      instance.contains("description", "test value");
+      const result = instance.buildFilterExpression();
+      expect(result).toBe('description @= "test value"');
+    });
+
+    it('should handle complex expressions with AND/OR and parentheses', () => {
+      const instance = new QueryBuilder();
+      const result = instance
+        .startsWith("City", "New")
+        .and()
+        .openParen()
+        .greaterThan("Population", 1000000)
+        .or()
+        .equals("Country", "USA")
+        .closeParen()
+        .buildFilterExpression();
+
+      expect(result).toBe('City _= "New" && (Population > 1000000 || Country == "USA" )');
+    });
+
+    it('should be safe to use with URLSearchParams without double-encoding', () => {
+      const instance = new QueryBuilder();
+      instance.contains("name", "John");
+      const filter = instance.buildFilterExpression();
+
+      // Simulate what URLSearchParams does
+      const params = new URLSearchParams({ filters: filter });
+      const url = `https://api.example.com/orders?${params.toString()}`;
+
+      // The filter value should be encoded exactly once
+      expect(url).toContain('filters=name+%40%3D+%22John%22');
+      // Should NOT contain double-encoded values like %2540 or Filters%3D
+      expect(url).not.toContain('%25');
+      expect(url).not.toContain('Filters');
+    });
+
+    it('should produce same expression as build() with encoding=false and no prefix', () => {
+      const withDefaults = new QueryBuilder(true, true);
+      const withoutDefaults = new QueryBuilder(false, false);
+
+      withDefaults.equals("status", "active").and().greaterThan("count", 5);
+      withoutDefaults.equals("status", "active").and().greaterThan("count", 5);
+
+      expect(withDefaults.buildFilterExpression()).toBe(withoutDefaults.build());
+    });
+  });
 });
