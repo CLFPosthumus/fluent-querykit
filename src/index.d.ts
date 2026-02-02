@@ -46,5 +46,6 @@ export default class QueryBuilder {
     greaterThanOrEqualCaseCount(property: string, value: number): QueryBuilder;
     lessThanOrEqualCaseCount(property: string, value: number): QueryBuilder;
     build(): string;
+    buildFilterExpression(): string;
 }
 export { QueryBuilder };

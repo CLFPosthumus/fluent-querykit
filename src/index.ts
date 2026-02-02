@@ -107,11 +107,46 @@ export default class QueryBuilder {
     return this.appendQuery(")");
   }  
 
+  /**
+   * Builds the full query string, optionally with `Filters=` prefix and URL encoding.
+   *
+   * By default, returns a URL-encoded string with the `Filters=` prefix, e.g.:
+   * `Filters%3D%20name%20%3D%3D%20%22John%22`
+   *
+   * This is suitable for direct URL concatenation: `${apiUrl}?${query}`
+   *
+   * **Warning:** Do NOT pass the result of `build()` to `URLSearchParams` or similar
+   * tools that perform their own URL encoding, as this will cause double-encoding.
+   * Use `buildFilterExpression()` instead for those cases.
+   */
   build(): string {
     this.query = this.query.trim()
     return this.encodeURi ? encodeURIComponent(this.query) : this.query;
   }
-  
+
+  /**
+   * Returns the raw filter expression without the `Filters=` prefix and without URL encoding.
+   *
+   * Use this when passing filters to tools that handle their own URL encoding,
+   * such as `URLSearchParams`, Axios params, or code-generated API clients (e.g. orval, openapi-generator).
+   *
+   * @example
+   * ```typescript
+   * const filter = new QueryBuilder().contains('name', 'John').buildFilterExpression()
+   * // Returns: 'name @= "John"'
+   *
+   * // Safe to use with URLSearchParams:
+   * const params = new URLSearchParams({ filters: filter })
+   * // Correctly produces: filters=name+%40%3D+%22John%22
+   * ```
+   */
+  buildFilterExpression(): string {
+    this.query = this.query.trim()
+    // Strip "Filters=" or "Filters= " prefix if present
+    const raw = this.query.replace(/^Filters=\s*/, '')
+    return raw;
+  }
+
 }
 
 export { QueryBuilder };
