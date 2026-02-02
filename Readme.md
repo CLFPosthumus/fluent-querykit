@@ -16,6 +16,10 @@ npm install fluent-querykit
 ```
 ## Usage
 
+### `build()` — Full query string (URL-encoded with `Filters=` prefix)
+
+Use `build()` when you need the complete query string for direct URL concatenation:
+
 ```typescript
 import { QueryBuilder } from 'fluent-querykit';
 
@@ -25,16 +29,39 @@ const query = new QueryBuilder()
   .startsWith('role', 'Admin')
   .build();
 
-console.log(query);
+// Returns: "Filters%3D%20name%20%3D%3D%20%22John%22%20%7C%7C%20role%20_%3D%20%22Admin%22"
+// Use directly in URL: `${apiUrl}?${query}`
 ```
+
+### `buildFilterExpression()` — Raw filter expression (no encoding, no prefix)
+
+Use `buildFilterExpression()` when passing filters to tools that handle their own URL encoding, such as `URLSearchParams`, Axios params, or code-generated API clients (e.g. orval, openapi-generator):
+
+```typescript
+import { QueryBuilder } from 'fluent-querykit';
+
+const filter = new QueryBuilder()
+  .contains('name', 'John')
+  .and()
+  .greaterThan('age', 18)
+  .buildFilterExpression();
+
+// Returns: 'name @= "John" && age > 18'
+
+// Safe to use with URLSearchParams (no double-encoding):
+const params = new URLSearchParams({ filters: filter });
+fetch(`${apiUrl}?${params.toString()}`);
+```
+
 For more examples check the [Wiki](https://github.com/CLFPosthumus/fluent-querykit/wiki)
 
-### Supported and tested Node.js versions:
-- 14.x - 21.x
-  
+### Supported Node.js versions
+
+CI tests against the current LTS and latest Node.js releases on Ubuntu and macOS.
+
 ### Contributing
 
-If you'd like to contribute to Fluent QueryKit, please create a PR or issue on [github](https://github.com/CLFPosthumus/fluent-querykit). 
+If you'd like to contribute to Fluent QueryKit, please create a PR or issue on [github](https://github.com/CLFPosthumus/fluent-querykit).
 
 ### License
 
